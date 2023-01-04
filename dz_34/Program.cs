@@ -4,66 +4,29 @@
 
 // [345, 897, 568, 234] -> 2
 
-int[] FillArray(int arrLength, int downBorder, int topBorder)
+int[] array = new int[10];
+int count = 0;
+Console.Write("[");
+
+for (int i = 0; i < array.Length; i++)
 {
-    //Генератор случайных чисел
-    Random numSintezator = new Random();
-    //Создаем массив
-    int[] arr = new int[arrLength];
-    //Тест границ
-    if (downBorder < topBorder)
+    array[i] = new Random().Next(100,1000);
+    if (i == array.Length - 1)
     {
-        //Заполняем массив
-        for (int i = 0; i < arr.Length; i++)
-        {
-            arr[i] = numSintezator.Next(downBorder, topBorder + 1);
-        }
+        Console.Write(array[i] + "]");
     }
-    //Возвращаем результат
-    return arr;
-}
-
-
-int CounterEven(int[] arr)
-{
-    int countEv = 0;
-    for (int i = 0; i < arr.Length; i++)
+    else 
     {
-        if (arr[i] % 2 == 0) countEv++;
+        Console.Write(array[i] + ", ");
     }
-    return countEv;
 }
+Console.WriteLine();
 
-// Метод сортировки пузырьком.
-int[] BubbleSort(int[] arr)
+for (int i = 0; i < array.Length; i++)
 {
-    for (int i = 1; i < arr.Length; i++)
+    if (array[i] % 2 == 0)
     {
-        for (int j = 0; j < arr.Length - i; j++)
-        {
-            if (arr[j] > arr[j + 1])
-            {
-                int temp;
-                temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
-            }
-        }
+        count++;
     }
-    return arr;
 }
-
-void Print1DArray(int[] array)
-{
-    Console.WriteLine("[{0}]", string.Join(", ", array));
-}
-
-void PrintCountEven(int line)
-{
-    Console.WriteLine(line);
-}
-
-int[] array = FillArray(12, 100, 1000);
-Print1DArray(array);
-PrintCountEven(CounterEven(array));
-Print1DArray(BubbleSort(array));
+Console.WriteLine("Количество чётных чисел в массиве: " + count);
